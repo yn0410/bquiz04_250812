@@ -36,7 +36,9 @@
         let chk = $("#chk").val();
         $.get("./api/chkAns.php", {chk}, (res)=>{
             if(parseInt(res)==1){
-                alert("驗證成功");
+                $.get("./api/chkPw.php",{acc:$("#acc").val(), pw:$("#pw").val()}, ()=>{
+                    location.href="?"; //=當前頁嗎?
+                });
             }else{
                 alert("對不起，您輸入的驗證碼有誤，請您重新登入");
             }
