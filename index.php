@@ -29,9 +29,7 @@
                         echo "<a href='?do=login'>";
                         echo "會員登入";
                         echo "</a>";
-
-                    }
-                        
+                    }     
                 ?>
                  |
                 <a href="?do=admin">管理登入</a>

@@ -3,7 +3,7 @@
 unset($_SESSION['login']);
 unset($_SESSION['admin']);
 
-to("../index.php")
+to("../index.php");
 
 
 ?>
