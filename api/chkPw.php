@@ -1,10 +1,22 @@
 <?php include_once "db.php";
 
-$chk = $User->count($_GET);
+$table = $_GET['table'];
+unset($_GET['table']);
+
+$chk = $$table->count($_GET);
+/* $chk = $User->count($_GET);
+$chk = $Admin->count($_GET); */
 
 if($chk){ //>0 = true
     echo 1;
-    $_SESSION['login'] = $_GET['acc'];
+    switch($table){
+        case 'User':
+            $_SESSION['login'] = $_GET['acc'];
+            break;
+        case 'Admin':
+            $_SESSION['admin'] = $_GET['acc'];
+            break;
+    }
 }else{
     echo 0;
 }

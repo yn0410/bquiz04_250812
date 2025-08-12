@@ -36,8 +36,12 @@
         let chk = $("#chk").val();
         $.get("./api/chkAns.php", {chk}, (res)=>{
             if(parseInt(res)==1){
-                $.get("./api/chkPw.php",{acc:$("#acc").val(), pw:$("#pw").val()}, ()=>{
-                    location.href="?"; //=當前頁嗎?
+                $.get("./api/chkPw.php",{acc:$("#acc").val(), pw:$("#pw").val(), table:"User"}, (res)=>{
+                    if(parseInt(res)==1){ //登入成功
+                        location.href="?"; //=當前頁嗎?    
+                    }else{
+                        alert("帳號或密碼錯誤");
+                    }
                 });
             }else{
                 alert("對不起，您輸入的驗證碼有誤，請您重新登入");
