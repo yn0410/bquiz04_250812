@@ -73,7 +73,7 @@
         });
     }
 
-    $(".del-btn").on("click",function(){
+    $(".del-btn").on("click",function(){ //從"back/admin.php"中複製過來的
         let id=$(this).data("id");
         if(confirm(`確定要刪除這筆分類嗎?`)){
             $.post("./api/del.php",{id,table:'Type'},()=>{
