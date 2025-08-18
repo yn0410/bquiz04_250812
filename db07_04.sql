@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-08-12 10:03:10
+-- 產生時間： 2025-08-18 04:43:37
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -39,7 +39,37 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `acc`, `pw`, `pr`) VALUES
-(1, 'admin', '1234', '');
+(1, 'admin', '1234', 'a:5:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"4\";i:4;s:1:\"5\";}'),
+(2, 'test', '1234', 'a:4:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"4\";}');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `type`
+--
+
+CREATE TABLE `type` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` text NOT NULL,
+  `big_id` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `type`
+--
+
+INSERT INTO `type` (`id`, `name`, `big_id`) VALUES
+(6, '流行皮件', 0),
+(7, '流行鞋區', 0),
+(9, '流行飾品', 0),
+(10, '背包', 0),
+(11, '男用皮件', 6),
+(12, '女用皮件', 6),
+(13, '少女鞋區', 7),
+(14, '紳士流行鞋區', 7),
+(15, '時尚手錶', 9),
+(16, '時尚珠寶', 9),
+(17, '背包', 10);
 
 -- --------------------------------------------------------
 
@@ -77,6 +107,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `user`
 --
 ALTER TABLE `user`
@@ -90,7 +126,13 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `type`
+--
+ALTER TABLE `type`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
