@@ -10,7 +10,7 @@
     新增中分類
     <select name="selBig" id="selBig"></select>
     <input type="text" name="mid" id="mid">
-    <button>新增</button>
+    <button onclick="addMid()">新增</button>
 </div>
 
 <!-- table.all>(tr.tt>td+td.ct>button*2) -->
@@ -33,12 +33,20 @@
 
 <script>
     getBigs();
-    
+
     function addBig(){
         let name=$("#big").val();
         $.post("./api/save_type.php",{name,big_id:0},()=>{
-            $("#big").val();
+            $("#big").val("");
             getBigs();
+        });
+    }
+
+    function addMid(){
+        let name=$("#mid").val();
+        let big_id=$("#selBig").val();
+        $.post("./api/save_type.php",{name,big_id},()=>{
+            location.reload();
         });
     }
 
