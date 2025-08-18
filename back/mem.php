@@ -23,3 +23,19 @@
     endforeach;
     ?>
 </table>
+
+<script>
+    $(".del-btn").on("click",function(){ //從"back/th.php"中複製過來的
+        let id=$(this).data("id");
+        if(confirm(`確定要刪除這筆會員資料嗎?`)){
+            $.post("./api/del.php",{id,table:'User'},()=>{
+                location.reload();
+            })
+        }
+    });
+
+    $(".edit-btn").on("click", function(){
+        let id=$(this).data("id");
+        location.href='?do=edit_user&id='+id;
+    });
+</script>
