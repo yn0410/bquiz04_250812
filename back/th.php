@@ -15,20 +15,37 @@
 
 <!-- table.all>(tr.tt>td+td.ct>button*2) -->
 <table class="all">
-    <tr class="tt">
-        <td>fafdsaf</td>
-        <td class="ct">
-            <button>修改</button>
-            <button>刪除</button>
-        </td>
-    </tr>
-    <tr class="pp ct">
-        <td>12312</td>
-        <td>
-            <button>修改</button>
-            <button>刪除</button>
-        </td>
-    </tr>
+    <?php
+    // 大分類 start
+    $bigs=$Type->all(['big_id'=>0]);
+    foreach($bigs as $big):
+    ?>
+        <tr class="tt">
+            <td><?=$big['name'];?></td>
+            <td class="ct">
+                <button class="edit-btn" data-id="<?=$big['id'];?>">修改</button>
+                <button class="del-btn" data-id="<?=$big['id'];?>">刪除</button>
+            </td>
+        </tr>
+        <?php
+        // 中分類 start
+        if($Type->count(['big_id'=>$big['id']])>0): //算大分類中有沒有中分類
+            $mids=$Type->all(['big_id'=>$big['id']]);
+            foreach($mids as $mid):
+        ?>
+                <tr class="pp ct">
+                    <td><?=$mid['name'];?></td>
+                    <td>
+                        <button class="edit-btn" data-id="<?=$mid['id'];?>">修改</button>
+                        <button class="del-btn" data-id="<?=$mid['id'];?>">刪除</button>
+                    </td>
+                </tr>
+    <?php
+            endforeach;
+        endif; // 中分類 end
+    endforeach; // 大分類 end
+    
+    ?>
 </table>
 
 <script>
@@ -55,6 +72,16 @@
             $("#selBig").html(options);
         });
     }
+
+    $(".del-btn").on("click",function(){
+        let id=$(this).data("id");
+        if(confirm(`確定要刪除這筆分類嗎?`)){
+            $.post("./api/del.php",{id,table:'Type'},()=>{
+                location.reload();
+            })
+        }
+    });
+
 </script>
 
 
