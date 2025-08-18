@@ -82,6 +82,21 @@
         }
     });
 
+    $(".edit-btn").on("click",function(){ //從"back/admin.php"中複製過來的
+        let id=$(this).data("id");
+        let name=$(this).parent().prev().text();
+        let newName=prompt("請輸入新的分名稱",name);
+        // console.log('newName',newName); //按"確定"，輸出"輸入的名稱"; 按"取消"，輸出"null";
+        if(newName != null){
+            $.post("./api/save_type.php",{id, name:newName}, ()=>{
+                // location.reload(); //法一
+                $(this).parent().prev().text(newName); //法二
+            });
+
+        }
+        
+    });
+
 </script>
 
 
