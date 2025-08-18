@@ -4,7 +4,7 @@ if(isset($_POST['bottom'])){ //判斷表單是送出?
 }
 ?>
 <h2 class="ct">編輯頁尾版權區</h2>
-<!--  -->
+<!-- table.all>tr>td.tt.ct+td.pp>input:text -->
 <form action="?do=bot" method="post">
 
     <table class="all">
