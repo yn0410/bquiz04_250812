@@ -37,7 +37,7 @@ if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
             <td><?=$item['price'];?></td>
             <td><?=$item['price']*$qt;?></td>
             <td>
-                <img src="./icon/0415.jpg" alt="">
+                <img src="./icon/0415.jpg" class="del-btn" data-id="<?=$id;?>">
             </td>
         </tr>
     <?php
@@ -60,3 +60,13 @@ if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
     echo "購物車是空的";
 }
 ?>
+
+
+<script>
+    $(".del-btn").on("click", function(){
+        let id = $(this).data("id");
+        $.post("./api/delCart.php", {id}, ()=>{
+            location.reload();
+        });
+    });
+</script>
