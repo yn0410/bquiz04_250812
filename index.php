@@ -50,20 +50,20 @@
         </div>
         <div id="left" class="ct">
         	<div style="min-height:400px;">
-                <a href="?type=0">全部商品(<?=$Item->count();?>)</a>
+                <a href="?type=0">全部商品(<?=$Item->count(['sh'=>1]);?>)</a>
             <?php
                 $bigs = $Type->all(['big_id'=>0]);
                 foreach($bigs as $big):
             ?>
                 <div class="ww">
-                    <a href="?type=<?=$big['id'];?>"><?=$big['name'];?>(<?=$Item->count(['big'=>$big['id']]);?>)</a>
+                    <a href="?type=<?=$big['id'];?>"><?=$big['name'];?>(<?=$Item->count(['big'=>$big['id'], 'sh'=>1]);?>)</a>
                 <?php
                     if($Type->count(['big_id'=>$big['id']]) >0):
                         $mids = $Type->all(['big_id'=>$big['id']]);
                         echo "<div class='s'>";
                         foreach($mids as $mid):
                 ?>
-                                <a class="s" href="?type=<?=$mid['id'];?>"><?=$mid['name'];?>(<?=$Item->count(['mid'=>$mid['id']]);?>)</a>
+                                <a class="s" href="?type=<?=$mid['id'];?>"><?=$mid['name'];?>(<?=$Item->count(['mid'=>$mid['id'], 'sh'=>1]);?>)</a>
             <?php
                         endforeach;
                         echo "</div>";
