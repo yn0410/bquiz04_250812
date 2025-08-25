@@ -1,5 +1,8 @@
 <!-- "back/add_item.php"複製過來改的 -->
 <h2 class="ct">修改商品</h2>
+<?php 
+$item=$Item->find($_GET['id']);
+?>
 <form action="./api/save_item.php" method="post" enctype="multipart/form-data">
     <table class="all">
         <tr>
@@ -16,31 +19,31 @@
         </tr>
         <tr>
             <td class="tt ct">商品編號</td>
-            <td class="pp">完成分類後自動分配</td>
+            <td class="pp"><?=$item['no'];?></td>
         </tr>
         <tr>
             <td class="tt ct">商品名稱</td>
-            <td class="pp"><input type="text" name="name" id="name"></td>
+            <td class="pp"><input type="text" name="name" id="name" value="<?=$item['name'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">商品價格</td>
-            <td class="pp"><input type="text" name="price" id="price"></td>
+            <td class="pp"><input type="text" name="price" id="price" value="<?=$item['price'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">規格</td>
-            <td class="pp"><input type="text" name="spec" id="spec"></td>
+            <td class="pp"><input type="text" name="spec" id="spec" value="<?=$item['spec'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">庫存量</td>
-            <td class="pp"><input type="text" name="stock" id="stock"></td>
+            <td class="pp"><input type="text" name="stock" id="stock" value="<?=$item['stock'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">商品圖片</td>
-            <td class="pp"><input type="file" name="img" id="img"></td>
+            <td class="pp"><input type="file" name="img" id="img" value="<?=$item['img'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">商品介紹</td>
-            <td class="pp"><textarea name="intro" id="intro" style="width: 75%; height:150px;"></textarea></td>
+            <td class="pp"><textarea name="intro" id="intro" style="width: 75%; height:150px;"><?=$item['intro'];?></textarea></td>
         </tr>
     </table>
     <div class="ct">

@@ -162,7 +162,12 @@
         }
         $.post("./api/sw.php", {id,sh}, ()=>{ //切換上架下架
             // location.reload;
-            $(this).parent().prev().text(); //還沒打完...
+            $(this).parent().prev().text(sh == 1 ? "販售中" : "已下架");
         });
     });
+
+    $(".edit-btn").on("click",function(){
+        let id=$(this).data("id");
+        location.href=`?do=edit_item&id=${id}`;
+    })
  </script>
