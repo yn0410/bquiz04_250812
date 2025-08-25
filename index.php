@@ -50,13 +50,22 @@
         </div>
         <div id="left" class="ct">
         	<div style="min-height:400px;">
-        	            </div>
-                        <span>
+                <?php
+                $bigs = $Type->all(['big_id'=>0]);
+                foreach($bigs as $big):
+                ?>
+                    <a href="?type=<?=$big['id'];?>"><?=$big['name'];?></a>
+                <?php
+                endforeach;
+                ?>
+        	</div>
+            <span>
             	<div>進站總人數</div>
                 <div style="color:#f00; font-size:28px;">
-                	00005                </div>
+                	00005
+                </div>
             </span>
-                    </div>
+        </div>
         <div id="right">
                 <?php
                 $do=$_GET['do']??'main';
@@ -69,7 +78,8 @@
                 ?>
         </div>
         <div id="bottom" style="line-height:70px;background:url(./icon/bot.png); color:#FFF;" class="ct">
-        	頁尾版權 :        </div>
+            <?=$Bottom->find(1)['bottom'];?>
+        </div>
     </div>
 
 </body></html>
