@@ -23,8 +23,8 @@
         <tr class="tt">
             <td><?=$big['name'];?></td>
             <td class="ct">
-                <button class="edit-btn" data-id="<?=$big['id'];?>">修改</button>
-                <button class="del-btn" data-id="<?=$big['id'];?>">刪除</button>
+                <button class="type-edit-btn" data-id="<?=$big['id'];?>">修改</button>
+                <button class="type-del-btn" data-id="<?=$big['id'];?>">刪除</button>
             </td>
         </tr>
         <?php
@@ -36,8 +36,8 @@
                 <tr class="pp ct">
                     <td><?=$mid['name'];?></td>
                     <td>
-                        <button class="edit-btn" data-id="<?=$mid['id'];?>">修改</button>
-                        <button class="del-btn" data-id="<?=$mid['id'];?>">刪除</button>
+                        <button class="type-edit-btn" data-id="<?=$mid['id'];?>">修改</button>
+                        <button class="type-del-btn" data-id="<?=$mid['id'];?>">刪除</button>
                     </td>
                 </tr>
     <?php
@@ -73,7 +73,7 @@
         });
     }
 
-    $(".del-btn").on("click",function(){ //從"back/admin.php"中複製過來的
+    $(".type-del-btn").on("click",function(){ //從"back/admin.php"中複製過來的
         let id=$(this).data("id");
         if(confirm(`確定要刪除這筆分類嗎?`)){
             $.post("./api/del.php",{id,table:'Type'},()=>{
@@ -82,7 +82,7 @@
         }
     });
 
-    $(".edit-btn").on("click",function(){ //從"back/admin.php"中複製過來的
+    $(".type-edit-btn").on("click",function(){ //從"back/admin.php"中複製過來的
         let id=$(this).data("id");
         let name=$(this).parent().prev().text();
         let newName=prompt("請輸入新的分名稱",name);
