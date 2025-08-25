@@ -38,8 +38,16 @@ $item = $Item->find($_GET['id']);
 </div>
 <div class="tt ct"  style="width:80%; margin:auto;">
     購買數量：
-    <input type="number" name="qt" value="1">
-    <a href="?do=buycart&id=<?=$item['id'];?>">
+    <input type="number" name="qt" value="1" id="qt">
+    <a href="javascript:order(<?=$item['id'];?>)">
         <img src="./icon/0402.jpg" alt="">
     </a>
 </div>
+
+<script>
+    function order(id){
+        let qt = $("#qt").val();
+        // location.href="?do=buycart&id="+id+"&qt="+qt;
+        location.href=`?do=buycart&id=${id}&qt=${qt}`;
+    }
+</script>
