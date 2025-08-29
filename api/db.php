@@ -165,6 +165,7 @@ $Admin=new DB('admin');
 $Type=new DB('type');
 $Bottom=new DB('bottom');
 $Item=new DB('item');
+$Order=new DB('orders');
 
 
 ?>
